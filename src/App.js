@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import Content from "./Content";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import News from "./pages/News";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: 50 }}>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          git remote -v
+          <li>
+            <Link to="/news">News</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" Component={Home}></Route>
+        <Route path="/news" Component={News}></Route>
+        <Route path="/contact" Component={Contact}></Route>
+      </Routes>
     </div>
   );
 }
-
 export default App;
