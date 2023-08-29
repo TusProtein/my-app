@@ -1,6 +1,7 @@
-function Wrapper({ children }) {
+function Wrapper({ children, className }) {
   return (
     <div
+      className={className}
       style={{
         width: "100%",
         height: "100%",

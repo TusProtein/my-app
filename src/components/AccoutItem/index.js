@@ -5,7 +5,7 @@ function AccountItem() {
   return (
     <div
       style={{
-        padding: "9px 16px",
+        padding: "1px 16px",
         cursor: "pointer",
       }}
       className="wrapper flex items-center gap-x-2 hover:bg-gray-100"

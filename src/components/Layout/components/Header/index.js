@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import style from "~/components/Style/style.module.css";
 import PopperWrapper from "~/components/Popper/Wrapper";
+import styles from "~/components/Button/Button.module.css";
 import AccountItem from "~/components/AccoutItem";
+import Menu from "~/components/Popper/Menu";
 
 import Tippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCircleQuestion,
+  faEarthEurope,
+  faEllipsisVertical,
+  faKeyboard,
   faMagnifyingGlass,
   faSignIn,
   faSpinner,
@@ -22,6 +28,22 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  const MENU_ITEMS = [
+    {
+      icon: <FontAwesomeIcon icon={faEarthEurope} />,
+      title: "English",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+      title: "Feedback and helps",
+      to: "/feedback",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faKeyboard} />,
+      title: "Keyboards shortcuts",
+    },
+  ];
 
   return (
     <div>
@@ -166,7 +188,7 @@ function Header() {
           </Tippy>
           {/* Actions */}
           <div>
-            <div>
+            <div className="flex gap-x-2 items-center">
               <Button text>
                 <span className="font-bold flex items-center justify-center">
                   Upload
@@ -177,6 +199,17 @@ function Header() {
                   Log In
                 </span>
               </Button>
+
+              <Menu items={MENU_ITEMS}>
+                <button
+                  style={{
+                    fontSize: 24,
+                  }}
+                  className="ml-3 bg-transparent py-1 px-2"
+                >
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </button>
+              </Menu>
             </div>
           </div>
         </div>

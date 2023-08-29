@@ -33,6 +33,17 @@
     line-height: 3rem;
   }
 }
+
+@layer base {
+  h2,
+  h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    line-height: 2rem;
+  }
+}
+
 @layer base {
   h4,
   h5,

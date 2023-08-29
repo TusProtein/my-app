@@ -7,9 +7,6 @@
   border: 1px solid transparent;
   user-select: none;
 }
-.buttonWrapper + .buttonWrapper {
-  margin-left: 8px;
-}
 
 .disable {
   pointer-events: none;
@@ -60,4 +57,12 @@
 .medium {
   padding: 15px 16px;
   min-width: 140px;
+}
+
+/* Button iconMenu */
+.iconMenu {
+  font-size: 24px;
+}
+.menuItem:hover {
+  background: rgba(22, 24, 35, 0.03);
 }

@@ -1,0 +1,9 @@
+.menuItem {
+  border-radius: 0;
+  width: 100%;
+  padding: "15px 16px";
+}
+
+.menuItem:hover {
+  background-color: rgba(22, 24, 35, 0.03);
+}

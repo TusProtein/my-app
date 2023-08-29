@@ -49,10 +49,7 @@ function Button({
 
   return (
     <Component className={classes} {...props}>
-      <div className="flex gap-x-1">
-        {children}
-        {iconLeft}
-      </div>
+      <div>{children}</div>
     </Component>
   );
 }
