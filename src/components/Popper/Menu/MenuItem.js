@@ -1,18 +1,20 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "~/components/Button";
 
-function MenuItem({ data }) {
+function MenuItem({ data, onClick }) {
   return (
     <Button
+      onClick={onClick}
       style={{
         width: "100%",
-        padding: "15px 16px",
+        padding: "12px 16px",
+        display: "flex",
+        columnGap: "8px",
       }}
+      iconLeft={data.icon}
       to={data.to}
     >
-      <div className="flex gap-x-2">
-        <div className="w-[20px] text-center">{data.icon}</div>
-        <div className="font-semibold">{data.title}</div>
-      </div>
+      <div className="font-semibold">{data.title}</div>
     </Button>
   );
 }

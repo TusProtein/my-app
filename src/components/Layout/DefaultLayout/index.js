@@ -5,8 +5,8 @@ function DefaultLayout({ children }) {
   return (
     <>
       <Header />
-      <div id="container" className=" w-full flex justify-center">
-        <div className={`${style.defaultLayoutWidth} flex`}>
+      <div id="container" className="w-full flex justify-center">
+        <div className={`${style.defaultLayoutWidth} flex px-6`}>
           <Sidebar />
           <div id="content" className="flex-1">
             {children}

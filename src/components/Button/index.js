@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 import styles from "~/components/Button/Button.module.css";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,7 @@ function Button({
   small = false,
   medium = false,
   iconLeft,
+  iconRight,
   onClick,
   ...passProps
 }) {
@@ -49,7 +51,9 @@ function Button({
 
   return (
     <Component className={classes} {...props}>
+      {iconLeft && <div className="w-[20px]">{iconLeft}</div>}
       <div>{children}</div>
+      {iconRight && <div className="w-[20px]">{iconRight}</div>}
     </Component>
   );
 }

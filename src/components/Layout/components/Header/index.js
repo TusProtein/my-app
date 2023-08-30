@@ -33,6 +33,20 @@ function Header() {
     {
       icon: <FontAwesomeIcon icon={faEarthEurope} />,
       title: "English",
+      children: {
+        data: [
+          {
+            type: "language",
+            code: "en",
+            title: "English",
+          },
+          {
+            type: "language",
+            code: "vi",
+            title: "Tiếng Việt",
+          },
+        ],
+      },
     },
     {
       icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -45,6 +59,16 @@ function Header() {
     },
   ];
 
+  const handleChangeItem = (menuItem) => {
+    switch (menuItem.type) {
+      case "language":
+        //Handle logic
+        console.log("thanh cong");
+        break;
+      default:
+    }
+  };
+
   return (
     <div>
       <div
@@ -52,7 +76,7 @@ function Header() {
         className="header w-full flex justify-center"
       >
         <div
-          className={`${style.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between `}
+          className={`${style.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between px-6`}
         >
           {/* Logo */}
           <div>
@@ -200,7 +224,7 @@ function Header() {
                 </span>
               </Button>
 
-              <Menu items={MENU_ITEMS}>
+              <Menu items={MENU_ITEMS} onChangeItem={handleChangeItem}>
                 <button
                   style={{
                     fontSize: 24,

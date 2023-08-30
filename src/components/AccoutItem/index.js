@@ -18,7 +18,7 @@ function AccountItem() {
         alt="avatar"
       />
       <div className="info flex flex-col gap-y-0.5">
-        <p className="nickname flex gap-x-1.5">
+        <div className="nickname flex gap-x-1.5">
           <span
             style={{
               color: "rgba(22, 24, 35, 1)",
@@ -37,7 +37,7 @@ function AccountItem() {
               icon={faCircleCheck}
             />
           </div>
-        </p>
+        </div>
         <span
           style={{
             color: "rgba(22, 24, 35, 0.5)",
