@@ -1,27 +1,39 @@
 import { useEffect, useState } from "react";
-import style from "~/components/Style/style.module.css";
-import PopperWrapper from "~/components/Popper/Wrapper";
-import styles from "~/components/Button/Button.module.css";
 import AccountItem from "~/components/AccoutItem";
 import Menu from "~/components/Popper/Menu";
+import PopperWrapper from "~/components/Popper/Wrapper";
+import styles from "~/components/Style/style.module.css";
 
-import Tippy from "@tippyjs/react/headless";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Tippy from "@tippyjs/react";
+import HeadlessTippy from "@tippyjs/react/headless";
+import "tippy.js/dist/tippy.css";
+
 import {
   faCircleQuestion,
+  faCloudUpload,
+  faCoins,
   faEarthEurope,
   faEllipsisVertical,
+  faGear,
   faKeyboard,
   faMagnifyingGlass,
-  faSignIn,
-  faSpinner,
+  faSignOut,
+  faUser,
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "~/components/Button";
-import { hover } from "@testing-library/user-event/dist/hover";
+import IconSearch from "~/components/Icons/IconSearch";
+import IconCloseSearch from "~/components/Icons/IconCloseSearch";
+import IconInbox from "~/components/Icons/IconInbox";
+import IconMessage from "~/components/Icons/IconMessage";
+import Image from "~/components/Image";
+
 function Header() {
-  const [changeButton, setChangeButton] = useState(false);
+  const [changeButton, setChangeButton] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+
+  const currentUser = true;
 
   useEffect(() => {
     setTimeout(() => {
@@ -69,6 +81,31 @@ function Header() {
     }
   };
 
+  const userMenu = [
+    {
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: "View profile",
+      to: "/view",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: "Get coins",
+      to: "/coins",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: "Settings",
+      to: "/settings",
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: "Log out",
+      to: "/signout",
+      border: true,
+    },
+  ];
+
   return (
     <div>
       <div
@@ -76,7 +113,7 @@ function Header() {
         className="header w-full flex justify-center"
       >
         <div
-          className={`${style.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between px-6`}
+          className={`${styles.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between px-6`}
         >
           {/* Logo */}
           <div>
@@ -122,7 +159,7 @@ function Header() {
             </svg>
           </div>
           {/* Input */}
-          <Tippy
+          <HeadlessTippy
             interactive
             visible={searchResult.length > 0}
             render={(attrs) => (
@@ -154,6 +191,7 @@ function Header() {
             >
               <input
                 onChange={(e) => setChangeButton(e.target.value)}
+                value={changeButton}
                 style={{
                   backgroundColor: "transparent",
                 }}
@@ -161,70 +199,101 @@ function Header() {
                 type="text"
                 placeholder="Search"
               ></input>
-              <div
-                style={{
-                  color: "rgba(22, 24, 35, 0.34)",
-                  fontSize: 16,
-                }}
-                className="absolute right-[16%]"
-              >
-                <FontAwesomeIcon icon={faXmarkCircle} />
-              </div>
-              {/* <div
-                style={{
-                  color: "rgba(22, 24, 35, 0.34)",
-                  fontSize: 16,
-                }}
-                className="absolute right-[16%]"
-              >
-                <FontAwesomeIcon icon={faSpinner} />
-              </div> */}
+
               <div
                 style={{ background: "rgba(22, 24, 35, .12)" }}
                 className="border-[0.9px] h-[28px] mr-[-6px]"
               ></div>
               {changeButton ? (
-                <button
-                  style={{
-                    color: "black",
-                    padding: "14px 16px 11px 12px",
-                    margin: "0 -7px",
-                    fontSize: 20,
-                  }}
-                  className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
-                >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+                <>
+                  <div
+                    onClick={() => setChangeButton("")}
+                    style={{
+                      color: "rgba(22, 24, 35, 0.34)",
+                      fontSize: 16,
+                    }}
+                    className="absolute right-[16%]"
+                  >
+                    <IconCloseSearch />
+                  </div>
+                  <button
+                    style={{
+                      color: "#333",
+                      padding: "9px 12px",
+                      margin: "0 -7px",
+                      fontSize: 20,
+                    }}
+                    className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
+                  >
+                    <IconSearch fill="#333" />
+                  </button>
+                </>
               ) : (
-                <button
-                  style={{
-                    color: "rgba(22, 24, 35, 0.34)",
-                    padding: "14px 16px 11px 12px",
-                    margin: "0 -7px",
-                    fontSize: 20,
-                  }}
-                  className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
-                >
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+                <>
+                  <button
+                    style={{
+                      color: "rgba(22, 24, 35, 0.34)",
+                      padding: "9px 12px",
+                      margin: "0 -7px",
+                      fontSize: 20,
+                    }}
+                    className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
+                  >
+                    <IconSearch />
+                  </button>
+                </>
               )}
             </div>
-          </Tippy>
+          </HeadlessTippy>
           {/* Actions */}
-          <div>
-            <div className="flex gap-x-2 items-center">
-              <Button text>
-                <span className="font-bold flex items-center justify-center">
-                  Upload
-                </span>
-              </Button>
-              <Button primary>
-                <span className="font-bold flex items-center justify-center">
-                  Log In
-                </span>
-              </Button>
-
-              <Menu items={MENU_ITEMS} onChangeItem={handleChangeItem}>
+          <div className="flex gap-x-2 items-center">
+            {currentUser ? (
+              <>
+                <Tippy
+                  interactive
+                  delay={[0, 200]}
+                  content="Upload video"
+                  placement="bottom"
+                >
+                  <button className={`iconUpload px-1 `}>
+                    <FontAwesomeIcon icon={faCloudUpload} />
+                  </button>
+                </Tippy>
+                <button className={`px-1`}>
+                  <IconMessage />
+                </button>
+                <button className={`px-1`}>
+                  <IconInbox />
+                </button>
+              </>
+            ) : (
+              <>
+                <Button text>
+                  <span className="font-bold flex items-center justify-center">
+                    Upload
+                  </span>
+                </Button>
+                <Button primary>
+                  <span className="font-bold flex items-center justify-center">
+                    Log In
+                  </span>
+                </Button>
+              </>
+            )}
+            <Menu
+              items={currentUser ? userMenu : MENU_ITEMS}
+              onChangeItem={handleChangeItem}
+            >
+              {currentUser ? (
+                <Image
+                  className="w-[40px] h-[40px] object-cover cursor-pointer ml-2 rounded-[50%] overflow-hidden"
+                  src={
+                    "https://1p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/08af8ee44c1da9a020886aafe56fad23~c5_100x100.jpeg?x-expires=1693036800&x-signature=dtm86Sp9%2Fd9KDfvRDEk1U4Poefs%3D"
+                  }
+                  alt="avatar"
+                  // fallback="https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"
+                />
+              ) : (
                 <button
                   style={{
                     fontSize: 24,
@@ -233,8 +302,8 @@ function Header() {
                 >
                   <FontAwesomeIcon icon={faEllipsisVertical} />
                 </button>
-              </Menu>
-            </div>
+              )}
+            </Menu>
           </div>
         </div>
       </div>

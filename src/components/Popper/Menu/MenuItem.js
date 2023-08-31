@@ -1,11 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "~/components/Button";
+import styles from "./Menu.module.css";
 
 function MenuItem({ data, onClick }) {
   return (
     <Button
+      className={data.border ? `${styles.border}` : ""}
       onClick={onClick}
       style={{
+        color: "rgb(22, 24, 35)",
         width: "100%",
         padding: "12px 16px",
         display: "flex",

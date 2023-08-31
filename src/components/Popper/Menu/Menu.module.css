@@ -7,3 +7,7 @@
 .menuItem:hover {
   background-color: rgba(22, 24, 35, 0.03);
 }
+
+.border {
+  border-top: 1px solid rgba(22, 24, 35, 0.12);
+}
