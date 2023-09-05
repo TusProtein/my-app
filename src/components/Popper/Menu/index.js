@@ -39,7 +39,7 @@ function Menu({ children, items = [], onChangeItem = () => {} }) {
       placement="bottom-end"
       render={(attrs) => (
         <div className="menuIcon w-[224px]" tabIndex="-1" {...attrs}>
-          <PopperWrapper className="pb-2">
+          <PopperWrapper>
             {history.length > 1 && (
               <HeaderMenu
                 title="Language"

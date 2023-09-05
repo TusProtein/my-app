@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
-import AccountItem from "~/components/AccoutItem";
 import Menu from "~/components/Popper/Menu";
-import PopperWrapper from "~/components/Popper/Wrapper";
 import styles from "~/components/Style/style.module.css";
 
 import Tippy from "@tippyjs/react";
-import HeadlessTippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
-
 import {
   faCircleQuestion,
   faCloudUpload,
@@ -16,30 +11,19 @@ import {
   faEllipsisVertical,
   faGear,
   faKeyboard,
-  faMagnifyingGlass,
   faSignOut,
   faUser,
-  faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "~/components/Button";
-import IconSearch from "~/components/Icons/IconSearch";
-import IconCloseSearch from "~/components/Icons/IconCloseSearch";
+
 import IconInbox from "~/components/Icons/IconInbox";
 import IconMessage from "~/components/Icons/IconMessage";
 import Image from "~/components/Image";
+import Search from "../Search";
 
 function Header() {
-  const [changeButton, setChangeButton] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
 
   const MENU_ITEMS = [
     {
@@ -158,93 +142,8 @@ function Header() {
               ></path>
             </svg>
           </div>
-          {/* Input */}
-          <HeadlessTippy
-            interactive
-            visible={searchResult.length > 0}
-            render={(attrs) => (
-              <div className="searchResult w-[361px]" tabIndex="-1" {...attrs}>
-                <PopperWrapper>
-                  <h4
-                    style={{
-                      color: "rgba(22, 24, 35, 0.5)",
-                      letterSpacing: "0.093px",
-                    }}
-                    className="px-4 flex justify-start text-[14px]"
-                  >
-                    Accounts
-                  </h4>
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                </PopperWrapper>
-              </div>
-            )}
-          >
-            <div
-              style={{
-                background: "rgba(22, 24, 35, .06)",
-                borderRadius: "92px",
-              }}
-              className="relative w-[361px] h-[46px] flex items-center justify-around hover:border-[1px] hover:border-solid hover:border-[#ccc] border-[1px] "
-            >
-              <input
-                onChange={(e) => setChangeButton(e.target.value)}
-                value={changeButton}
-                style={{
-                  backgroundColor: "transparent",
-                }}
-                className="h-full focus:outline-none w-[80%] px-4 caret-red-500 placeholder-shown:border-red"
-                type="text"
-                placeholder="Search"
-              ></input>
-
-              <div
-                style={{ background: "rgba(22, 24, 35, .12)" }}
-                className="border-[0.9px] h-[28px] mr-[-6px]"
-              ></div>
-              {changeButton ? (
-                <>
-                  <div
-                    onClick={() => setChangeButton("")}
-                    style={{
-                      color: "rgba(22, 24, 35, 0.34)",
-                      fontSize: 16,
-                    }}
-                    className="absolute right-[16%]"
-                  >
-                    <IconCloseSearch />
-                  </div>
-                  <button
-                    style={{
-                      color: "#333",
-                      padding: "9px 12px",
-                      margin: "0 -7px",
-                      fontSize: 20,
-                    }}
-                    className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
-                  >
-                    <IconSearch fill="#333" />
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    style={{
-                      color: "rgba(22, 24, 35, 0.34)",
-                      padding: "9px 12px",
-                      margin: "0 -7px",
-                      fontSize: 20,
-                    }}
-                    className={`items-center flex hover:bg-slate-200 hover:rounded-r-[92px] active:bg-opacity-40`}
-                  >
-                    <IconSearch />
-                  </button>
-                </>
-              )}
-            </div>
-          </HeadlessTippy>
+          {/* Search */}
+          <Search />
           {/* Actions */}
           <div className="flex gap-x-2 items-center">
             {currentUser ? (
@@ -288,7 +187,7 @@ function Header() {
                 <Image
                   className="w-[40px] h-[40px] object-cover cursor-pointer ml-2 rounded-[50%] overflow-hidden"
                   src={
-                    "https://1p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/08af8ee44c1da9a020886aafe56fad23~c5_100x100.jpeg?x-expires=1693036800&x-signature=dtm86Sp9%2Fd9KDfvRDEk1U4Poefs%3D"
+                    "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/08af8ee44c1da9a020886aafe56fad23~c5_100x100.jpeg?x-expires=1693036800&x-signature=dtm86Sp9%2Fd9KDfvRDEk1U4Poefs%3D"
                   }
                   alt="avatar"
                   // fallback="https://upload.wikimedia.org/wikipedia/vi/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"

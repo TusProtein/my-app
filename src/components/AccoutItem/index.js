@@ -1,24 +1,25 @@
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import Image from "../Image";
 
-function AccountItem() {
+function AccountItem({ data }) {
   return (
-    <div
+    <Link
+      to={`/:${data.nickname}`}
       style={{
-        padding: "1px 16px",
+        padding: "8px 16px",
         cursor: "pointer",
       }}
       className="wrapper flex items-center gap-x-2 hover:bg-gray-100"
     >
-      <img
-        className="w-[40px] h-[40px] object-cover"
-        src={
-          "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/08af8ee44c1da9a020886aafe56fad23~c5_100x100.jpeg?x-expires=1693036800&x-signature=dtm86Sp9%2Fd9KDfvRDEk1U4Poefs%3D"
-        }
+      <Image
+        className="w-[40px] h-[40px] object-cover rounded-[50%]"
+        src={data.avatar}
         alt="avatar"
       />
-      <div className="info flex flex-col gap-y-0.5">
-        <div className="nickname flex gap-x-1.5">
+      <div className="info flex flex-col gap-y-1">
+        <div className="username flex gap-x-1.5">
           <span
             style={{
               color: "rgba(22, 24, 35, 1)",
@@ -26,28 +27,30 @@ function AccountItem() {
             className="name font-semibold"
           >
             {" "}
-            Mai Anh Tu
+            {data.full_name}
           </span>
           <div>
-            <FontAwesomeIcon
-              style={{
-                color: "rgb(32, 213, 236)",
-                fontSize: ".9rem",
-              }}
-              icon={faCircleCheck}
-            />
+            {data.tick && (
+              <FontAwesomeIcon
+                style={{
+                  color: "rgb(32, 213, 236)",
+                  fontSize: ".9rem",
+                }}
+                icon={faCircleCheck}
+              />
+            )}
           </div>
         </div>
         <span
           style={{
             color: "rgba(22, 24, 35, 0.5)",
           }}
-          className="userName text-[14px] flex justify-start"
+          className="nickname text-[14px] flex justify-start"
         >
-          tusprotein
+          {data.nickname}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
