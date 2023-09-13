@@ -6,7 +6,7 @@ function DefaultLayout({ children }) {
     <>
       <Header />
       <div id="container" className="w-full flex justify-center">
-        <div className={`${style.defaultLayoutWidth} flex px-6`}>
+        <div className={`${style.defaultLayoutWidth} flex px-6 mt-[60px]`}>
           <Sidebar />
           <div id="content" className="flex-1">
             {children}

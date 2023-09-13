@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function HeaderMenu({ title, onBack }) {
   return (
-    <div className="h-[50px] relative flex justify-center items-center mt-[-8px]">
+    <div className="h-[50px] relative flex justify-center items-center mt-[-8px] flex-shrink-0">
       <div onClick={onBack} className="absolute left-[10%] cursor-pointer">
         <FontAwesomeIcon icon={faChevronLeft} />
       </div>

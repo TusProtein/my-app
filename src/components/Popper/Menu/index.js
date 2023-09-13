@@ -5,7 +5,12 @@ import MenuItem from "./MenuItem";
 import style from "./Menu.module.css";
 import HeaderMenu from "./HeaderMenu";
 
-function Menu({ children, items = [], onChangeItem = () => {} }) {
+function Menu({
+  children,
+  items = [],
+  hideOnClick = false,
+  onChangeItem = () => {},
+}) {
   const [history, setHistory] = useState([{ data: items }]);
   const lastMenu = history[history.length - 1];
 
@@ -31,30 +36,33 @@ function Menu({ children, items = [], onChangeItem = () => {} }) {
   };
 
   return (
-    <Tippy
-      offset={[12, 2]}
-      interactive
-      onHide={() => setHistory((prev) => prev.slice(0, 1))}
-      delay={[0, 700]}
-      placement="bottom-end"
-      render={(attrs) => (
-        <div className="menuIcon w-[224px]" tabIndex="-1" {...attrs}>
-          <PopperWrapper>
-            {history.length > 1 && (
-              <HeaderMenu
-                title="Language"
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, prev.length - 1));
-                }}
-              />
-            )}
-            {renderItems()}
-          </PopperWrapper>
-        </div>
-      )}
-    >
-      {children}
-    </Tippy>
+    <div>
+      <Tippy
+        offset={[12, 2]}
+        interactive
+        hideOnClick={hideOnClick}
+        onHide={() => setHistory((prev) => prev.slice(0, 1))}
+        delay={[0, 700]}
+        placement="bottom-end"
+        render={(attrs) => (
+          <div className="menuIcon w-[224px]" tabIndex="-1" {...attrs}>
+            <PopperWrapper className="flex flex-col">
+              {history.length > 1 && (
+                <HeaderMenu
+                  title="Language"
+                  onBack={() => {
+                    setHistory((prev) => prev.slice(0, prev.length - 1));
+                  }}
+                />
+              )}
+              <div className="overflow-y-auto">{renderItems()}</div>
+            </PopperWrapper>
+          </div>
+        )}
+      >
+        {children}
+      </Tippy>
+    </div>
   );
 }
 

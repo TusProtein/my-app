@@ -1,5 +1,11 @@
 import Menu from "~/components/Popper/Menu";
 import styles from "~/components/Style/style.module.css";
+import Button from "~/components/Button";
+import IconInbox from "~/components/Icons/IconInbox";
+import IconMessage from "~/components/Icons/IconMessage";
+import Image from "~/components/Image";
+import Search from "../Search";
+import routesConfig from "~/config/routes";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -15,12 +21,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "~/components/Button";
-
-import IconInbox from "~/components/Icons/IconInbox";
-import IconMessage from "~/components/Icons/IconMessage";
-import Image from "~/components/Image";
-import Search from "../Search";
+import { Link } from "react-router-dom";
 
 function Header() {
   const currentUser = true;
@@ -59,7 +60,6 @@ function Header() {
     switch (menuItem.type) {
       case "language":
         //Handle logic
-        console.log("thanh cong");
         break;
       default:
     }
@@ -94,13 +94,13 @@ function Header() {
     <div>
       <div
         style={{ boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.12)" }}
-        className="header w-full flex justify-center"
+        className="header w-full flex justify-center fixed bg-white z-10"
       >
         <div
           className={`${styles.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between px-6`}
         >
           {/* Logo */}
-          <div>
+          <Link to={routesConfig.home}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="118"
@@ -141,30 +141,50 @@ function Header() {
                 d="M91.58 28.887a3.94 3.94 0 0 1-3.94-3.945 3.94 3.94 0 1 1 7.882 0c0 2.18-1.77 3.945-3.942 3.945Zm0-12.058c-4.477 0-8.106 3.631-8.106 8.113 0 4.482 3.629 8.113 8.106 8.113 4.478 0 8.106-3.631 8.106-8.113 0-4.482-3.628-8.113-8.106-8.113Z"
               ></path>
             </svg>
-          </div>
+          </Link>
           {/* Search */}
           <Search />
           {/* Actions */}
           <div className="flex gap-x-2 items-center">
             {currentUser ? (
-              <>
-                <Tippy
-                  interactive
-                  delay={[0, 200]}
-                  content="Upload video"
-                  placement="bottom"
-                >
-                  <button className={`iconUpload px-1 `}>
-                    <FontAwesomeIcon icon={faCloudUpload} />
-                  </button>
-                </Tippy>
-                <button className={`px-1`}>
-                  <IconMessage />
-                </button>
-                <button className={`px-1`}>
-                  <IconInbox />
-                </button>
-              </>
+              <div className="flex items-center">
+                <div>
+                  <Tippy
+                    interactive
+                    delay={[0, 100]}
+                    content="Upload video"
+                    placement="bottom"
+                  >
+                    <button className={`iconUpload px-2 `}>
+                      <FontAwesomeIcon icon={faCloudUpload} />
+                    </button>
+                  </Tippy>
+                </div>
+                <div>
+                  <Tippy
+                    interactive
+                    delay={[0, 100]}
+                    content="Message"
+                    placement="bottom"
+                  >
+                    <button className={`px-2`}>
+                      <IconMessage />
+                    </button>
+                  </Tippy>
+                </div>
+                <div>
+                  <Tippy
+                    interactive
+                    delay={[0, 100]}
+                    content="Inbox"
+                    placement="bottom"
+                  >
+                    <button className={`px-2`}>
+                      <IconInbox />
+                    </button>
+                  </Tippy>
+                </div>
+              </div>
             ) : (
               <>
                 <Button text>
