@@ -104,6 +104,7 @@ html *::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0);
 }
 
+/* Tippy */
 body .tippy-box {
   border-radius: 8px;
   font-size: 1.6rem;

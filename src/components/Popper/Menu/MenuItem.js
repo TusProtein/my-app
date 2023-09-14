@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "~/components/Button";
+import Button from "~/components/Button/Button";
 import styles from "./Menu.module.css";
 
 function MenuItem({ data, onClick }) {

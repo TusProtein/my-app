@@ -1,9 +1,9 @@
-import Home from "~/pages/Home";
-import Following from "~/pages/Following";
-import HeaderOnly from "~/layouts/HeaderOnly";
-import Profile from "~/pages/Profile";
-import Search from "~/pages/Search";
-import Upload from "~/pages/Upload";
+import Home from "~/pages/Home/Home";
+import Following from "~/pages/Following/Following";
+import HeaderOnly from "~/layouts/HeaderOnly/HeaderOnly";
+import Profile from "~/pages/Profile/Profile";
+import Search from "~/pages/Search/Search";
+import Upload from "~/pages/Upload/Upload";
 import config from "~/config";
 
 export const publicRoutes = [

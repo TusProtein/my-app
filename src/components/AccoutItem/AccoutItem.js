@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import Image from "../Image";
+import Image from "../Image/Image";
 
 function AccountItem({ data }) {
   return (

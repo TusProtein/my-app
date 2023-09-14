@@ -1,15 +1,15 @@
 import HeadlessTippy from "@tippyjs/react/headless";
 import { useEffect, useRef, useState } from "react";
 import PopperWrapper from "~/components/Popper/Wrapper";
-import AccountItem from "~/components/AccoutItem";
+import AccountItem from "~/components/AccoutItem/AccoutItem";
 import useDebounced from "~/hooks/useDebounced";
 import * as searchServices from "~/services/searchService";
 
-import IconCloseSearch from "~/components/Icons/IconCloseSearch";
-import IconSearch from "~/components/Icons/IconSearch";
+import IconCloseSearch from "~/components/Icons/IconCloseSearch/IconCloseSearch";
+import IconSearch from "~/components/Icons/IconSearch/IconSearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import IconLoading from "~/components/Icons/IconLoading";
+import IconLoading from "~/components/Icons/IconLoading/IconLoading";
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -18,10 +18,10 @@ function Search() {
 
   const inputRef = useRef();
 
-  const debounced = useDebounced(searchValue, 600);
+  const debouncedValue = useDebounced(searchValue, 600);
 
   useEffect(() => {
-    if (!debounced.trim()) {
+    if (!debouncedValue.trim()) {
       setSearchResult([]);
       return;
     }
@@ -29,13 +29,13 @@ function Search() {
     const fetchApi = async () => {
       setLoading(true);
 
-      const result = await searchServices.search(debounced);
+      const result = await searchServices.search(debouncedValue);
       setSearchResult(result);
 
       setLoading(false);
     };
     fetchApi();
-  }, [debounced]);
+  }, [debouncedValue]);
 
   const handleHideResult = () => setShowResult(false);
   const handleShowResult = () => setShowResult(true);

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Header from "~/layouts/components/Header";
-import Sidebar from "./Sidebar/index.js";
+import Header from "~/layouts/components/Header/Header";
+import Sidebar from "./Sidebar/Sidebar.js";
 import style from "~/components/Style/style.module.css";
 function DefaultLayout({ children }) {
   return (

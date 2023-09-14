@@ -36,25 +36,28 @@ function Menu({
     });
   };
 
+  const handleResetMenu = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
+
+  const handleBack = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1));
+  };
+
   return (
     <div>
       <Tippy
         offset={[12, 2]}
         interactive
         hideOnClick={hideOnClick}
-        onHide={() => setHistory((prev) => prev.slice(0, 1))}
+        onHide={handleResetMenu}
         delay={[0, 700]}
         placement="bottom-end"
         render={(attrs) => (
           <div className="menuIcon w-[224px]" tabIndex="-1" {...attrs}>
             <PopperWrapper className="flex flex-col">
               {history.length > 1 && (
-                <HeaderMenu
-                  title={current.title}
-                  onBack={() => {
-                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                  }}
-                />
+                <HeaderMenu title={current.title} onBack={handleBack} />
               )}
               <div className="overflow-y-auto">{renderItems()}</div>
             </PopperWrapper>
