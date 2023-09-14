@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function IconSearch({
   className,
   width = "1.6rem",
@@ -22,5 +23,9 @@ function IconSearch({
     </svg>
   );
 }
+
+IconSearch.propTypes = {
+  className: PropTypes.string,
+};
 
 export default IconSearch;

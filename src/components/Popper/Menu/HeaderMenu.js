@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -11,5 +12,10 @@ function HeaderMenu({ title, onBack }) {
     </div>
   );
 }
+
+HeaderMenu.propTypes = {
+  title: PropTypes.string.isRequired,
+  onBack: PropTypes.func.isRequired,
+};
 
 export default HeaderMenu;

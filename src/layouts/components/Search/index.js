@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import PopperWrapper from "~/components/Popper/Wrapper";
 import AccountItem from "~/components/AccoutItem";
 import useDebounced from "~/hooks/useDebounced";
-import * as searchServices from "~/apiServices/searchServices";
+import * as searchServices from "~/services/searchService";
 
 import IconCloseSearch from "~/components/Icons/IconCloseSearch";
 import IconSearch from "~/components/Icons/IconSearch";

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function IconInbox({ className, width = "2rem", height = "2rem" }) {
   return (
     <svg
@@ -17,5 +18,8 @@ function IconInbox({ className, width = "2rem", height = "2rem" }) {
     </svg>
   );
 }
+IconInbox.propTypes = {
+  className: PropTypes.string,
+};
 
 export default IconInbox;

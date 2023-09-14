@@ -61,19 +61,19 @@
 
 @font-face {
   font-family: TikTokFont;
-  src: url("./Fonts/TikTokFont-Regular\ \(1\).woff2");
+  src: url("./assets/fonts/TikTokFont-Regular\ \(1\).woff2");
   font-weight: 400;
 }
 
 @font-face {
   font-family: TikTokFont;
-  src: url("./Fonts/TikTokFont-Semibold.woff2");
+  src: url("./assets/fonts/TikTokFont-Semibold.woff2");
   font-weight: 600;
 }
 
 @font-face {
   font-family: TikTokFont;
-  src: url("./Fonts/TikTokFont-Bold.woff2");
+  src: url("./assets/fonts/TikTokFont-Bold.woff2");
   font-weight: 700;
 }
 

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function IconCloseSearch({ width = "1rem", height = "1rem", className }) {
   return (
     <svg
@@ -18,5 +20,9 @@ function IconCloseSearch({ width = "1rem", height = "1rem", className }) {
     </svg>
   );
 }
+
+IconCloseSearch.propTypes = {
+  className: PropTypes.string,
+};
 
 export default IconCloseSearch;

@@ -5,7 +5,7 @@ import IconInbox from "~/components/Icons/IconInbox";
 import IconMessage from "~/components/Icons/IconMessage";
 import Image from "~/components/Image";
 import Search from "../Search";
-import routesConfig from "~/config/routes";
+import config from "~/config";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -31,6 +31,7 @@ function Header() {
       icon: <FontAwesomeIcon icon={faEarthEurope} />,
       title: "English",
       children: {
+        title: "Language",
         data: [
           {
             type: "language",
@@ -100,7 +101,7 @@ function Header() {
           className={`${styles.defaultLayoutWidth} h-[60px] text-2xl font-semibold text-center flex items-center justify-between px-6`}
         >
           {/* Logo */}
-          <Link to={routesConfig.home}>
+          <Link to={config.routes.home}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="118"
@@ -142,6 +143,7 @@ function Header() {
               ></path>
             </svg>
           </Link>
+
           {/* Search */}
           <Search />
           {/* Actions */}

@@ -1,21 +1,29 @@
+import PropTypes from "prop-types";
 import { forwardRef, useState } from "react";
-import image from "~/img/item-default.svg";
-function Image({ src, alt, fallback: customFallback = image, ...props }, ref) {
-  const [fallBack, setFallBack] = useState("");
+import image from "~/assets/img/item-default.svg";
+const Image = forwardRef(
+  ({ src, alt, fallback: customFallback = image, ...props }, ref) => {
+    const [fallBack, setFallBack] = useState("");
 
-  const handleImgDefault = () => {
-    setFallBack(customFallback);
-  };
+    const handleImgDefault = () => {
+      setFallBack(customFallback);
+    };
 
-  return (
-    <img
-      ref={ref}
-      src={fallBack || src}
-      alt={alt}
-      {...props}
-      onError={handleImgDefault}
-    />
-  );
-}
+    return (
+      <img
+        ref={ref}
+        src={fallBack || src}
+        alt={alt}
+        {...props}
+        onError={handleImgDefault}
+      />
+    );
+  }
+);
 
-export default forwardRef(Image);
+Image.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  fallback: PropTypes.string,
+};
+export default Image;

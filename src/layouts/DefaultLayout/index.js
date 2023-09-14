@@ -1,4 +1,5 @@
-import Header from "~/components/Layout/components/Header";
+import PropTypes from "prop-types";
+import Header from "~/layouts/components/Header";
 import Sidebar from "./Sidebar/index.js";
 import style from "~/components/Style/style.module.css";
 function DefaultLayout({ children }) {
@@ -16,5 +17,9 @@ function DefaultLayout({ children }) {
     </>
   );
 }
+
+DefaultLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default DefaultLayout;

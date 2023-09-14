@@ -1,31 +1,31 @@
 import Home from "~/pages/Home";
 import Following from "~/pages/Following";
-import HeaderOnly from "~/components/Layout/HeaderOnly";
+import HeaderOnly from "~/layouts/HeaderOnly";
 import Profile from "~/pages/Profile";
 import Search from "~/pages/Search";
 import Upload from "~/pages/Upload";
-import routesConfig from "~/config/routes";
+import config from "~/config";
 
 export const publicRoutes = [
   {
-    path: routesConfig.home,
+    path: config.routes.home,
     component: Home,
   },
   {
-    path: routesConfig.following,
+    path: config.routes.following,
     component: Following,
   },
   {
-    path: routesConfig.profile,
+    path: config.routes.profile,
     component: Profile,
   },
   {
-    path: routesConfig.upload,
+    path: config.routes.upload,
     component: Upload,
     layout: HeaderOnly,
   },
   {
-    path: routesConfig.search,
+    path: config.routes.search,
     component: Search,
     layout: null,
   },

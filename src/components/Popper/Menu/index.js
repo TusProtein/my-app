@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Tippy from "@tippyjs/react/headless";
 import { Children, useState } from "react";
 import PopperWrapper from "~/components/Popper/Wrapper";
@@ -12,10 +13,10 @@ function Menu({
   onChangeItem = () => {},
 }) {
   const [history, setHistory] = useState([{ data: items }]);
-  const lastMenu = history[history.length - 1];
+  const current = history[history.length - 1];
 
   const renderItems = () => {
-    return lastMenu.data.map((item, index) => {
+    return current.data.map((item, index) => {
       const isParent = !!item.children;
 
       return (
@@ -49,7 +50,7 @@ function Menu({
             <PopperWrapper className="flex flex-col">
               {history.length > 1 && (
                 <HeaderMenu
-                  title="Language"
+                  title={current.title}
                   onBack={() => {
                     setHistory((prev) => prev.slice(0, prev.length - 1));
                   }}
@@ -65,5 +66,12 @@ function Menu({
     </div>
   );
 }
+
+Menu.propTypes = {
+  children: PropTypes.node.isRequired,
+  items: PropTypes.array,
+  hideOnClick: PropTypes.bool,
+  onChangeItem: PropTypes.func,
+};
 
 export default Menu;

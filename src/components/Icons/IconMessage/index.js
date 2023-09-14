@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function IconMessage({ width = "1.6rem", height = "1.6rem", className }) {
   return (
     <svg
@@ -17,5 +18,9 @@ function IconMessage({ width = "1.6rem", height = "1.6rem", className }) {
     </svg>
   );
 }
+
+IconMessage.propTypes = {
+  className: PropTypes.string,
+};
 
 export default IconMessage;
