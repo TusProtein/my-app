@@ -25,6 +25,14 @@
 }
 
 @layer base {
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1rem;
+  }
+}
+
+@layer base {
   h1,
   h2,
   h3 {
