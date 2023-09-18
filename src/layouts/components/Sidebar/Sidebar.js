@@ -1,4 +1,3 @@
-import SuggestAccounts from "~/components/\bSuggestAccounts/\bSuggestAccounts";
 import { IconHome, IconLive, IconUserGroup } from "~/components/Icons";
 import config from "~/config";
 import Menu from "./Menu";
@@ -25,8 +24,6 @@ function Sidebar() {
             to={config.routes.live}
           />
         </Menu>
-        <SuggestAccounts label="Suggested accounts" />
-        {/* <SuggestAccounts label="Following accounts" /> */}
       </h1>
     </>
   );
