@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "TikTokFont", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1rem;
-}
-
 @layer base {
   ul,
   ol {
@@ -86,6 +80,12 @@ body {
   text-rendering: optimizeSpeed;
   box-sizing: border-box;
   overflow-y: overlay;
+}
+
+* {
+  font-family: "TikTokFont", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1rem;
 }
 
 /* Scrollbar */

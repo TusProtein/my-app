@@ -5,6 +5,7 @@ import Profile from "~/pages/Profile/Profile";
 import Search from "~/pages/Search/Search";
 import Upload from "~/pages/Upload/Upload";
 import config from "~/config";
+import Live from "~/pages/Live/Live";
 
 export const publicRoutes = [
   {
@@ -28,5 +29,9 @@ export const publicRoutes = [
     path: config.routes.search,
     component: Search,
     layout: null,
+  },
+  {
+    path: config.routes.live,
+    component: Live,
   },
 ];

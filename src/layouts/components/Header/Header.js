@@ -1,8 +1,7 @@
 import Menu from "~/components/Popper/Menu/Menu";
 import styles from "~/components/Style/style.module.css";
 import Button from "~/components/Button/Button";
-import IconInbox from "~/components/Icons/IconInbox/IconInbox";
-import IconMessage from "~/components/Icons/IconMessage/IconMessage";
+import { IconInbox, IconMessage } from "~/components/Icons";
 import Image from "~/components/Image/Image";
 import Search from "../Search/Search";
 import config from "~/config";

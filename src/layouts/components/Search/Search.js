@@ -5,11 +5,9 @@ import AccountItem from "~/components/AccoutItem/AccoutItem";
 import useDebounced from "~/hooks/useDebounced";
 import * as searchServices from "~/services/searchService";
 
-import IconCloseSearch from "~/components/Icons/IconCloseSearch/IconCloseSearch";
-import IconSearch from "~/components/Icons/IconSearch/IconSearch";
+import { IconCloseSearch, IconSearch, IconLoading } from "~/components/Icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import IconLoading from "~/components/Icons/IconLoading/IconLoading";
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
