@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Menu from "~/components/Popper/Menu/Menu";
 import styles from "~/components/Style/style.module.css";
 import Button from "~/components/Button/Button";
@@ -5,6 +6,7 @@ import { IconInbox, IconMessage } from "~/components/Icons";
 import Image from "~/components/Image/Image";
 import Search from "../Search/Search";
 import config from "~/config";
+import customStyles from "~/layouts/components/Header/customStyles.module.css";
 
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -21,9 +23,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
 
 function Header() {
-  const currentUser = true;
+  const currentUser = false;
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
 
   const MENU_ITEMS = [
     {
@@ -193,11 +210,19 @@ function Header() {
                     Upload
                   </span>
                 </Button>
-                <Button primary>
+                <Button onClick={openModal} primary>
                   <span className="font-bold flex items-center justify-center">
                     Log In
                   </span>
                 </Button>
+                <Modal
+                  isOpen={modalIsOpen}
+                  onAfterOpen={afterOpenModal}
+                  onRequestClose={closeModal}
+                  // style={styles.customStyles}
+                  className={styles.customStyles}
+                  contentLabel="Example Modal"
+                ></Modal>
               </>
             )}
             <Menu

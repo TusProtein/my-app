@@ -7,7 +7,7 @@ import MenuItem from "./MenuItem";
 function Sidebar() {
   return (
     <>
-      <h1 id="sidebar" className="w-[352px] min-h-[1000px] pt-5 pb-[26px]">
+      <h1 id="sidebar" className="w-[20%] min-h-[1000px] pt-5 pb-[26px] pl-3">
         <Menu>
           <MenuItem
             icon={<IconHome />}
